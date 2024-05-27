@@ -1,0 +1,182 @@
+[
+  {
+    "title": "Zaktualizować stronę internetową",
+    "description": "Dodać nowe funkcje i poprawić błędy na stronie firmowej.",
+    "priority": "mid",
+    "due_date": "2024-06-05"
+  },
+  {
+    "title": "Przygotować prezentację dla klienta",
+    "description": "Stworzyć prezentację pokazującą korzyści z naszej usługi.",
+    "priority": "high",
+    "due_date": "2024-06-08"
+  },
+  {
+    "title": "Zorganizować spotkanie zespołu",
+    "description": "Ustalić termin, przygotować agendę i zarezerwować salę.",
+    "priority": "mid",
+    "due_date": "2024-06-03"
+  },
+  {
+    "title": "Napisać artykuł na bloga",
+    "description": "Przygotować artykuł na temat nowych trendów w branży.",
+    "priority": "low",
+    "due_date": "2024-06-12"
+  },
+  {
+    "title": "Przeprowadzić szkolenie dla nowych pracowników",
+    "description": "Przygotować materiały szkoleniowe i przeprowadzić sesję szkoleniową.",
+    "priority": "high",
+    "due_date": "2024-06-07"
+  },
+  {
+    "title": "Skontaktować się z dostawcą",
+    "description": "Omówić warunki nowej umowy i negocjować ceny.",
+    "priority": "mid",
+    "due_date": "2024-06-09"
+  },
+  {
+    "title": "Uzupełnić zapasy w magazynie",
+    "description": "Zamówić brakujące produkty i upewnić się, że magazyn jest w pełni zaopatrzony.",
+    "priority": "low",
+    "due_date": "2024-06-15"
+  },
+  {
+    "title": "Sprawdzić stan konta firmowego",
+    "description": "Przejrzeć transakcje i upewnić się, że wszystko się zgadza.",
+    "priority": "mid",
+    "due_date": "2024-06-06"
+  },
+  {
+    "title": "Przygotować kampanię marketingową",
+    "description": "Stworzyć plan kampanii, materiały promocyjne i strategię działania.",
+    "priority": "high",
+    "due_date": "2024-06-11"
+  },
+  {
+    "title": "Zaktualizować bazę danych klientów",
+    "description": "Dodać nowe kontakty i zaktualizować informacje o obecnych klientach.",
+    "priority": "low",
+    "due_date": "2024-06-10"
+  },
+  {
+    "title": "Przeprowadzić analizę konkurencji",
+    "description": "Zebrać informacje o konkurentach i przygotować raport.",
+    "priority": "mid",
+    "due_date": "2024-06-13"
+  },
+  {
+    "title": "Opracować nowy produkt",
+    "description": "Przygotować koncepcję i wstępny prototyp nowego produktu.",
+    "priority": "high",
+    "due_date": "2024-06-20"
+  },
+  {
+    "title": "Zorganizować wydarzenie firmowe",
+    "description": "Planowanie i koordynacja wydarzenia dla pracowników i klientów.",
+    "priority": "mid",
+    "due_date": "2024-06-18"
+  },
+  {
+    "title": "Zaktualizować dokumentację projektową",
+    "description": "Przeanalizować i zaktualizować wszystkie dokumenty projektowe.",
+    "priority": "low",
+    "due_date": "2024-06-21"
+  },
+  {
+    "title": "Sprawdzić systemy bezpieczeństwa",
+    "description": "Przeprowadzić audyt i upewnić się, że systemy bezpieczeństwa są aktualne.",
+    "priority": "high",
+    "due_date": "2024-06-22"
+  },
+  {
+    "title": "Przygotować budżet na następny kwartał",
+    "description": "Sporządzić prognozy finansowe i zaplanować wydatki.",
+    "priority": "high",
+    "due_date": "2024-06-30"
+  },
+  {
+    "title": "Przeprowadzić badanie satysfakcji klienta",
+    "description": "Zebrać opinie klientów na temat naszych produktów i usług.",
+    "priority": "mid",
+    "due_date": "2024-06-17"
+  },
+  {
+    "title": "Zaktualizować procedury operacyjne",
+    "description": "Przegląd i aktualizacja wewnętrznych procedur i procesów.",
+    "priority": "low",
+    "due_date": "2024-06-25"
+  },
+  {
+    "title": "Uczestniczyć w konferencji branżowej",
+    "description": "Zarejestrować się, przygotować prezentację i uczestniczyć w konferencji.",
+    "priority": "mid",
+    "due_date": "2024-06-14"
+  },
+  {
+    "title": "Zaktualizować profile na mediach społecznościowych",
+    "description": "Przeanalizować i zaktualizować informacje na firmowych profilach społecznościowych.",
+    "priority": "low",
+    "due_date": "2024-06-16"
+  },
+  {
+    "title": "Przygotować ofertę handlową",
+    "description": "Opracować i wysłać ofertę dla potencjalnego klienta.",
+    "priority": "high",
+    "due_date": "2024-06-19"
+  },
+  {
+    "title": "Sprawdzić stan zapasów biurowych",
+    "description": "Upewnić się, że wszystkie niezbędne materiały biurowe są dostępne.",
+    "priority": "low",
+    "due_date": "2024-06-23"
+  },
+  {
+    "title": "Przeprowadzić szkolenie z obsługi klienta",
+    "description": "Przygotować materiały i przeprowadzić szkolenie dla działu obsługi klienta.",
+    "priority": "mid",
+    "due_date": "2024-06-24"
+  },
+  {
+    "title": "Przygotować raport z audytu",
+    "description": "Zebrać wyniki audytu i przygotować końcowy raport.",
+    "priority": "high",
+    "due_date": "2024-06-26"
+  },
+  {
+    "title": "Zaktualizować oprogramowanie firmowe",
+    "description": "Zainstalować najnowsze aktualizacje i sprawdzić działanie systemów.",
+    "priority": "mid",
+    "due_date": "2024-06-27"
+  },
+  {
+    "title": "Przygotować plan szkoleń",
+    "description": "Sporządzić harmonogram i plan szkoleń na następny miesiąc.",
+    "priority": "low",
+    "due_date": "2024-06-28"
+  },
+  {
+    "title": "Zorganizować spotkanie z klientem",
+    "description": "Ustalić termin i miejsce spotkania oraz przygotować agendę.",
+    "priority": "mid",
+    "due_date": "2024-06-29"
+  },
+  {
+    "title": "Przygotować prognozę sprzedaży",
+    "description": "Analiza danych i przygotowanie prognozy na kolejny kwartał.",
+    "priority": "high",
+    "due_date": "2024-07-01"
+  },
+  {
+    "title": "Przeprowadzić kontrolę jakości",
+    "description": "Sprawdzić produkty pod kątem zgodności z normami jakości.",
+    "priority": "mid",
+    "due_date": "2024-07-02"
+  },
+  {
+    "title": "Zaktualizować harmonogram projektu",
+    "description": "Przejrzeć i zaktualizować harmonogram prac projektowych.",
+    "priority": "low",
+    "due_date": "2024-07-03"
+  }
+]
