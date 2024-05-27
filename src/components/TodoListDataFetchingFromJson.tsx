@@ -1,4 +1,4 @@
-import tasks from "../tasks.json";
+import tasksJson from "../tasks.json";
 import React, {useState} from "react";
 
 interface Task {
@@ -7,15 +7,18 @@ interface Task {
     priority: string;
     due_date: string;
 }
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const FetchDataFromJson: React.FC = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
 
     const fetchData = async () => {
         try {
-            const response = await fetch('src/tasks.json');
-            const data = await response.json();
-            setTasks(data.tasks);
+            const response = async () =>
+                sleep(3000).then(() => tasksJson)
+            const data = await response();
+            setTasks(data);
+            console.log(data)
         } catch (error) {
             console.log('Error fetching data:', error);
         }
