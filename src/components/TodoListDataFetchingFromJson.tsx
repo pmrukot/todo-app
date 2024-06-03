@@ -1,59 +1,116 @@
+import styled from "styled-components";
 import tasksJson from "../tasks.json";
-import React, {useEffect, useState} from "react";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
+import React, { useState } from "react";
 
 interface Task {
-    title: string;
-    description: string;
-    priority: string;
-    due_date: string;
+  title: string;
+  description: string;
+  priority: string;
+  due_date: string;
 }
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-const response = async () =>
-    sleep(50).then(() => tasksJson)
+
+const Table = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const TableRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+`;
+
+const TableElement = styled.div<{ flexGrow: number }>`
+  width: 100%;
+`;
+
+const TableFilters = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+`;
+
+const TodoList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  width: 100vw;
+  margin: 16px;
+`;
+
+const TableHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const FetchDataFromJson: React.FC = () => {
-    const [tasks, setTasks] = useState<Task[]>([]);
-    const [counter, setCounter] = useState(0);
-    const fetchData = async () => {
-        try {
-            const response = async () =>
-                sleep(3000).then(() => tasksJson)
-            const data = await response();
-            setTasks(data);
-            console.log(data)
-        } catch (error) {
-            console.log('Error fetching data:', error);
-        }
-    };
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [titleSearch, setTitleSearch] = useState("");
+  const [priority, setPriority] = useState("any");
 
-    // useEffect( () => {
-    //      response().then( (data) => {
-    //         setTasks([data[counter]])
-    //     }).catch( (error) => {
-    //         console.log(error)
-    //      });
-    //  }, [ counter ])
-    // console.log(counter)
-    return (
-        <div>
-            <h1>Lista Zadań</h1>
-            {/*<button onClick={() => setCounter( (value) => value + 1)} >*/}
-            <button onClick={fetchData} >
-                Fetch Data
-            </button>
-            <ul>
-                {tasks.map((task, index) => (
-                    <li key={index}>
-                        <h2>{task.title}</h2>
-                        <p>{task.description}</p>
-                        <p>Priorytet: {task.priority}</p>
-                        <p>Termin: {task.due_date}</p>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
-}
+  const fetchData = async () => {
+    try {
+      const response = async () => sleep(3000).then(() => tasksJson);
+      const data = await response();
+      setTasks(data);
+      console.log(data);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  };
 
-export {FetchDataFromJson}
+  // dodać debounce/throttling
+
+  const filteredTasks = tasks
+    .filter((task) => task.title.toLowerCase().includes(titleSearch))
+    .filter((task) => {
+      return priority === "any" || task.priority === priority;
+    });
+
+  return (
+    <TodoList>
+      <TableHeader>
+        <h4>Lista Zadań</h4>
+        <button onClick={fetchData}>Pobierz listę zadań</button>
+      </TableHeader>
+      <TableFilters>
+        <input
+          id="title"
+          type="text"
+          name="title"
+          value={titleSearch}
+          onChange={(e) => setTitleSearch(e.target.value)}
+          required
+        />
+        <label htmlFor="taskPriority">Priority </label>
+        <select
+          id="taskPriority"
+          name="priority"
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+          required
+        >
+          <option value="any">any</option>
+          <option value="low">low</option>
+          <option value="mid">mid</option>
+          <option value="high">high</option>
+        </select>
+      </TableFilters>
+
+      <Table>
+        {filteredTasks.map((task, index) => (
+          <TableRow key={index}>
+            <TableElement flexGrow={2}>{task.title}</TableElement>
+            <TableElement flexGrow={2}>{task.description}</TableElement>
+            <TableElement flexGrow={1}>Priorytet: {task.priority}</TableElement>
+            <TableElement flexGrow={1}>Termin: {task.due_date}</TableElement>
+          </TableRow>
+        ))}
+      </Table>
+    </TodoList>
+  );
+};
+
+export { FetchDataFromJson };
