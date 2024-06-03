@@ -14,7 +14,13 @@ const App = () => (
       <S.Layout>
         <TodoListLocalState />
         <TodoListDataFetching />
-          <FetchDataFromJson />
+          <S.Table>
+            <S.Td>
+              <S.Th>
+              <FetchDataFromJson />
+              </S.Th>
+            </S.Td>
+          </S.Table>
       </S.Layout>
     </S.AppContainer>
   </QueryClientProvider>

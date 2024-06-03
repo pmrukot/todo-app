@@ -15,30 +15,31 @@ const response = async () =>
 const FetchDataFromJson: React.FC = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [counter, setCounter] = useState(0);
-    // const fetchData = async () => {
-    //     try {
-    //         const response = async () =>
-    //             sleep(3000).then(() => tasksJson)
-    //         const data = await response();
-    //         setTasks(data);
-    //         console.log(data)
-    //     } catch (error) {
-    //         console.log('Error fetching data:', error);
-    //     }
-    // };
+    const fetchData = async () => {
+        try {
+            const response = async () =>
+                sleep(3000).then(() => tasksJson)
+            const data = await response();
+            setTasks(data);
+            console.log(data)
+        } catch (error) {
+            console.log('Error fetching data:', error);
+        }
+    };
 
-    useEffect( () => {
-         response().then( (data) => {
-            setTasks([data[counter]])
-        }).catch( (error) => {
-            console.log(error)
-         });
-     }, [ counter ])
-    console.log(counter)
+    // useEffect( () => {
+    //      response().then( (data) => {
+    //         setTasks([data[counter]])
+    //     }).catch( (error) => {
+    //         console.log(error)
+    //      });
+    //  }, [ counter ])
+    // console.log(counter)
     return (
         <div>
             <h1>Lista Zadań</h1>
-            <button onClick={() => setCounter( (value) => value + 1)} >
+            {/*<button onClick={() => setCounter( (value) => value + 1)} >*/}
+            <button onClick={fetchData} >
                 Fetch Data
             </button>
             <ul>
