@@ -61,7 +61,12 @@ const FetchDataFromJson: React.FC = () => {
     }
   };
 
-  // dodać debounce/throttling
+  // TODO: add option to clear all filters
+  // TODO: add sorting
+  // TODO: improve styling: add column headers, make priority and date columns smaller (1:2 proportion)
+  // TODO: add spinner when data is loading (React.Suspense)
+  // TODO: add custom hook for input element handling (should accept initial input value AND return current input value and onChangeFunction to pass to html element)
+  // TODO: add debounce/throttling (optional)
 
   const filteredTasks = tasks
     .filter((task) => task.title.toLowerCase().includes(titleSearch))
