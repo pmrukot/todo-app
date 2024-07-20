@@ -1,9 +1,6 @@
-import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as S from "./App.styles";
-import { TodoListLocalState } from "./components/TodoListLocalState";
-import { TodoListDataFetching } from "./components/TodoListDataFetching";
-import { FetchDataFromJson } from "./components/TodoListDataFetchingFromJson";
+import { FetchDataFromJson } from "./components/Todo";
 
 const queryClient = new QueryClient();
 
@@ -12,8 +9,6 @@ const App = () => (
     <S.AppContainer>
       <S.Header>Todo App</S.Header>
       <S.Layout>
-        {/* <TodoListLocalState /> */}
-
         <FetchDataFromJson />
       </S.Layout>
     </S.AppContainer>
