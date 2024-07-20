@@ -22,3 +22,7 @@ export const tasksComparator =
     }
     return 0;
   };
+
+export const parseDate = (dateString: string) => {
+  return new Date(dateString);
+};

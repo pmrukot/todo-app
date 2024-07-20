@@ -1,13 +1,12 @@
-import tasksJson from "../tasks.json";
 import React, { useState } from "react";
 
 import * as S from "./Todo.styles";
 import { SortButton } from "./SortButton";
-import { Priority, Task } from "../types";
-import { sleep, tasksComparator } from "./Todo.utils";
+import { Priority } from "../types";
+import { parseDate, tasksComparator } from "./Todo.utils";
+import { useQueryGetTodo } from "./Todo.hooks";
 
 const Todo: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
   const [titleSearch, setTitleSearch] = useState("");
   const [priority, setPriority] = useState<Priority>("any");
   const [dateFrom, setDateFrom] = useState("2024-01-01");
@@ -16,16 +15,7 @@ const Todo: React.FC = () => {
   const [sortPriority, setSortPriority] = useState(false);
   const [sortDate, setSortDate] = useState(false);
 
-  const fetchData = async () => {
-    try {
-      const response = async () => sleep(3000).then(() => tasksJson);
-      const data = await response();
-      setTasks(data as Task[]);
-      console.log(data);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
-  };
+  const { data: tasks = [], refetch: refetchTasks } = useQueryGetTodo();
 
   // TODO: add option to clear all filters done
   // TODO: add sorting
@@ -42,10 +32,7 @@ const Todo: React.FC = () => {
     setSortPriority(false);
     setSortDate(false);
   };
-  const parseDate = (dateString: String) => {
-    const [day, month, year] = dateString.split("/");
-    return new Date(`${year}-${month}-${day}`);
-  };
+
   const filteredTasks = tasks
     .filter((task) => task.title.toLowerCase().includes(titleSearch))
     .filter((task) => parseDate(task.due_date) > parseDate(dateFrom))
@@ -53,16 +40,14 @@ const Todo: React.FC = () => {
     .filter((task) => {
       return priority === "any" || task.priority === priority;
     })
-    // .sort(tasksComparator("title", sortTitle ? "asc" : "desc"))
     .sort(tasksComparator("date", sortDate ? "asc" : "desc"))
-    // .sort(tasksComparator("description", sortDescription ? "asc" : "desc"))
     .sort(tasksComparator("priority", sortPriority ? "asc" : "desc"));
 
   return (
     <S.TodoList>
       <S.TableHeader>
         <h4>Lista Zadań</h4>
-        <button onClick={fetchData}>Pobierz listę zadań</button>
+        <button onClick={() => refetchTasks()}>Pobierz listę zadań</button>
       </S.TableHeader>
       <S.Table>
         <S.TableRow>
@@ -125,7 +110,7 @@ const Todo: React.FC = () => {
               Priorytet: {task.priority}
             </S.TableElement>
             <S.TableElement flexGrow={1}>
-              Termin: {task.due_date}
+              Termin: {parseDate(task.due_date).toLocaleString()}
             </S.TableElement>
           </S.TableRow>
         ))}
