@@ -58,17 +58,17 @@ const priorityMap: Record<Priority, number> = {
 }
 
 const tasksComparator = (column:string, order:string) => (a:Task, b:Task) => {
-  if (column === "title" && order === "asc") {
-    return a.title.localeCompare(b.title);
-  } else if (column === "title" && order === "desc") {
-    return b.title.localeCompare(a.title);
-
-  } else if (column === "description" && order === "asc") {
-    return a.description.localeCompare(b.description);
-  } else if (column === "description" && order === "desc") {
-    return b.description.localeCompare(a.description);
-  }
-  else if (column === "priority" && order === "asc") {
+  // if (column === "title" && order === "asc") {
+  //   return a.title.localeCompare(b.title);
+  // } else if (column === "title" && order === "desc") {
+  //   return b.title.localeCompare(a.title);
+  //
+  // } else if (column === "description" && order === "asc") {
+  //   return a.description.localeCompare(b.description);
+  // } else if (column === "description" && order === "desc") {
+  //   return b.description.localeCompare(a.description);
+  // }
+  if (column === "priority" && order === "asc") {
     return priorityMap[a.priority] - priorityMap[b.priority];
   } else if (column === "priority" && order === "desc") {
     return priorityMap[b.priority] - priorityMap[a.priority];
@@ -96,7 +96,7 @@ const FetchDataFromJson: React.FC = () => {
   const [priority, setPriority] = useState<Priority>("any");
   const [sortOption, setSortOption] = useState("titleAsc");
   const [dateFrom, setDateFrom] = useState("2024-01-01");
-  const [dateTo, setDateTo] = useState("2024-12-30");
+  const [dateTo, setDateTo] = useState("2024-12-31");
 
   const [sortTitle, setSortTitle] = useState(false);
   const [sortDescription, setSortDescription] = useState(false);
@@ -126,6 +126,10 @@ const FetchDataFromJson: React.FC = () => {
     setTitleSearch("");
     setPriority("any");
     setSortOption("titleAsc");
+    setDateFrom("2024-01-01");
+    setDateTo("2024-12-31");
+    setSortPriority(false);
+    setSortDate(false);
   }
   const parseDate = (dateString: String) => {
     const [day, month, year] = dateString.split('/');
@@ -154,7 +158,7 @@ const FetchDataFromJson: React.FC = () => {
         <TableRow>
           <TableElement flexGrow={2}>
             <TableFilters>
-              <button onClick={clearAllFilters}>clearAllFilters</button>
+              <button onClick={clearAllFilters}>Clear all filters</button>
               <input
                   id="title"
                   type="text"
@@ -176,6 +180,10 @@ const FetchDataFromJson: React.FC = () => {
                 <option value="mid">mid</option>
                 <option value="high">high</option>
               </select>
+              </TableFilters>
+          </TableElement>
+          <TableElement flexGrow={2}>
+            <TableFilters>
               <label htmlFor="dateFrom">Date from</label>
               <input id="dateFrom"
                      type="date"
@@ -190,11 +198,8 @@ const FetchDataFromJson: React.FC = () => {
                      value={dateTo}
                      onChange={e => setDateTo(e.target.value)}
               />
-              </TableFilters>
+            </TableFilters>
           </TableElement>
-          <TableElement flexGrow={2}></TableElement>
-          {/*<SortButton sortFlag={sortTitle} setSortFlag={setSortTitle}/>*/}
-          {/*<SortButton sortFlag={sortDescription} setSortFlag={setSortDescription}/>*/}
           <SortButton sortFlag={sortPriority} setSortFlag={setSortPriority}/>
           <SortButton sortFlag={sortDate} setSortFlag={setSortDate}/>
         </TableRow>
